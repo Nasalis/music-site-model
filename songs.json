@@ -1,0 +1,52 @@
+{
+    "songsOfWeek": [
+
+        {
+            "artist": "Florence + The Machine",
+            "song": "Stand By Me",
+            "image": "/florence.jpg"
+        },
+    
+        {
+            "artist": "Lady Gaga",
+            "song": "911",
+            "image": "/ladygaga.png"
+        },
+    
+        {
+            "artist": "Black Eyed Peas",
+            "song": "Vida Loca",
+            "image": "/blackeyedpeas.jpg"
+        },
+    
+        {
+            "artist": "Nessa Barret",
+            "song": "Pain",
+            "image": "/pain.jpg"
+        },
+    
+        {
+            "artist": "Sasha Loan",
+            "song": "House With No Mirrors",
+            "image": "/sashasloan.jpg"
+        },
+    
+        {
+            "artist": "Shy Martin",
+            "song": "Are you happy?",
+            "image": "/shymartin.jpg"
+        },
+    
+        {
+            "artist": "Taylor Swift",
+            "song": "Exile",
+            "image": "/taylorswift.jpg"
+        },
+    
+        {
+            "artist": "The Weeknd",
+            "song": "In Your Eyes",
+            "image": "/theweeknd.jpg"
+        }
+    ]
+}
