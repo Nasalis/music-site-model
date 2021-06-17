@@ -1,85 +1,51 @@
-import React, { useEffect, useState } from 'react';
-
-import Image from 'next/image';
+import React, { useEffect } from 'react';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import styles from './playlist.module.scss';
 import { useTheme } from '../../components/ThemeContext';
 import { apiInfo } from '../../components/utils/api';
-import { 
-    convertSecondsToMinutes,
-} from '../../components/utils/convertTime';
+import { convertSecondsToMinutes } from '../../components/utils/convertTime';
 import { usePlayer } from '../../components/PlayerContext';
 import { amountAnything } from '../../components/utils/numberAmountFormated';
+import SongButton from '../../components/Button';
 
-type Artist = {
-    id: number,
-    name: string,
-    picture_small: string,
-}
-
-type TracksData = {
-    title: string,
-    duration: number,
-    preview: string,
-    artist: {
-        name: string
-    }
-}
-
-type Tracks = {
-    data: TracksData[]
-}
-
-interface Albuns {
-    id: string,
-    label: string,
-    artist: Artist,
-    nb_tracks: number,
-    duration: number,
-    durationAsString: string
-    fans: number,
-    release_date: string,
-    tracks: Tracks,
-    cover_medium: string,
-}
-
+import {Albuns} from '../../components/utils/types'
 interface AlbunsProps {
     album: Albuns
 }
 
-
 export default function Playlist({album}: AlbunsProps) {
 
     const {theme} = useTheme();
-    const {play, playlist, isPlaying} = usePlayer();
+    const {play} = usePlayer();
 
     const color = theme.colors.playlistOrAlbumColor
 
-    const songList = album.tracks.data
+    useEffect(() => {
+        async function getInfo() {
+            if(album.type !== "album")
+                return;
+
+            const data = await fetch(`${apiInfo.BASE_URL}/album/${album.id}`,{
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-key": apiInfo.API_KEY,
+                    "x-rapidapi-host": apiInfo.HOST
+                }
+            }).then(response => response.json())
+            album = data;
+        }
+        getInfo()
+    }, [album])
 
     return (
         <div style={{background: theme.colors.backgroundBold}} className={styles.playlistContainer}>
             <header className={styles.playlistHeader}>
-                {/* <Image 
-                    className={styles.playlistImage}
-                    width={172} 
-                    height={172} 
-                    src={playlist?.cover_medium} 
-                    objectFit="cover"
-                /> */}
                 <img src={album.cover_medium} alt="" />
-
                 <div className={styles.playlistInfo}>
                     <h2 style={{color: theme.colors.text}}>{album?.label}</h2>
                     <div>
-                        {/* <Image
-                            width={28} 
-                            height={28} 
-                            src={playlist?.artist?.picture_small} 
-                            objectFit="cover"
-                        /> */}
 
                         <img src={album.artist.picture_small} alt="" />
                         <span style={{color}}>{album?.artist?.name}</span>
@@ -93,26 +59,9 @@ export default function Playlist({album}: AlbunsProps) {
             <div className={styles.datagridContainer}>
                 <div className={styles.datagridToolBar}>
                     <div className={styles.playlistSongsContainer}>
-                        <div className={styles.playlistSongsButtons}>
-                            <button  
-                                className={styles.playingButton}
-                                onClick = {() => playlist(songList, 0, album.cover_medium)}
-                            >
-                                {isPlaying ? "Tocando" : "Ouvir"}
-                                <i className="far fa-play-circle"></i>
-                            </button>
-                            <div>
-                                <button>
-                                    <i style={{color: theme.colors.grayColor4}} className="fas fa-heart"></i>
-                                </button>
-                                <button>
-                                    <i style={{color: theme.colors.grayColor4}} className="fas fa-share-square"></i>
-                                </button>
-                                <button>
-                                    <i style={{color: theme.colors.grayColor4}} className="fas fa-ellipsis-h"></i>
-                                </button>
-                            </div>
-                        </div>
+
+                        <SongButton smallWidth={false} dataSong={album}/>
+
                     </div>
                 </div>
                 
