@@ -3,33 +3,8 @@ import { useTheme } from '../ThemeContext';
 import Link from 'next/link';
 import styles from './style.module.scss';
 
-type Artist = {
-    id: number,
-    name: string,
-    picture_small: string,
-}
-
-type TracksData = {
-    title: string,
-    duration: number,
-}
-
-type Tracks = {
-    data: TracksData
-}
-
-interface Albuns {
-    id: string,
-    label: string,
-    artist: Artist,
-    nb_tracks: number,
-    duration: number,
-    fans: string,
-    gender: string,
-    release_date: string,
-    tracks: Tracks[],
-    cover_medium: string,
-}
+import {Albuns} from '../utils/types'
+import { amountAnything } from '../utils/numberAmountFormated';
 
 interface PlaylistOrAlbumCardProps {
     data: Albuns
@@ -52,8 +27,10 @@ export function PlaylistOrAlbumCard({data}: PlaylistOrAlbumCardProps) {
                     </ul>
                 </div>
                 <div className={styles.cardInformations}>
-                    <span style={{color}} className={styles.title}>{data.label}</span>
-                    <span style={{color}}>{data.nb_tracks} tracks - {data.fans} fans</span>
+                    <span style={{color}} className={styles.title}>{data?.label || data?.title}</span>
+                    {data.nb_tracks !== undefined && ( 
+                        <span style={{color}}>{data.nb_tracks} tracks - {amountAnything.fansAmountMessage(data.fans)}</span>
+                    )}
                 </div>
             </div>
         </Link>
