@@ -49,7 +49,7 @@ export default function Home() {
 
       const albunsInfo = [];
 
-      apiInfo.albunsIDs.map(id => {
+      apiInfo.selectedAlbunsForYou.map(id => {
         albunsInfo.push(fetch(getAlbuns(id), {
           "method": "GET",
           "headers": {
@@ -65,8 +65,6 @@ export default function Home() {
     }
     loadAlbuns();
   }, [])
-
-  console.log(albunsList)
 
   return (
     <div style={{background: theme.colors.backgroundBold}} className={styles.homeContainer}>
@@ -97,9 +95,9 @@ export default function Home() {
       </Slider>
 
       <Slider length={albunsList.length}>
-        {albunsList.map((albuns, index) => (
+        {albunsList.map((album, index) => (
           <div key={index} className={styles.sliderItem}>
-            <PlaylistOrAlbumCard data={albuns}/>
+            <PlaylistOrAlbumCard data={album}/>
           </div>
         ))}
       </Slider>
