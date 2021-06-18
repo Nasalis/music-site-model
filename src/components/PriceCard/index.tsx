@@ -10,10 +10,7 @@ interface PriceCardProps {
 
 export function PriceCard({avaiable, data, price}: PriceCardProps) {
 
-    const {theme} = useTheme()
-    const background = theme.colors.priceCardColorBackground;
-    const backgroundBold = theme.colors.priceCardColorBackgroundFooter;
-    const itemCardColor = theme.colors.grayColor4;
+    const {darkMode} = useTheme()
     
     return (
         <div className={styles.priceCardContainer}>
@@ -24,25 +21,25 @@ export function PriceCard({avaiable, data, price}: PriceCardProps) {
                 <img src='/wave.svg' alt=""/>
             </header>
 
-            <ul style={{background}} className={styles.priceCardDetails}>
-                <li style={{color: itemCardColor}}><i className="fas fa-check"></i>73 milhões de faixas</li>
-                <li style={{color: itemCardColor}}><i className="fas fa-check"></i>Sem publicidade</li>
-                <li style={{color: itemCardColor}}><i className="fas fa-check"></i>Pule quantas faixas quiser</li>
-                <li style={{color: itemCardColor}}><i className="fas fa-check"></i>Modo offline</li>
+            <ul className={!darkMode ? styles.priceCardDetails : `${styles.priceCardDetails} ${styles.darkMode}`}>
+                <li><i className={!darkMode ? "fas fa-check" : `fas fa-check ${styles.darkMode}`}></i>73 milhões de faixas</li>
+                <li><i className={!darkMode ? "fas fa-check" : `fas fa-check ${styles.darkMode}`}></i>Sem publicidade</li>
+                <li><i className={!darkMode ? "fas fa-check" : `fas fa-check ${styles.darkMode}`}></i>Pule quantas faixas quiser</li>
+                <li><i className={!darkMode ? "fas fa-check" : `fas fa-check ${styles.darkMode}`}></i>Modo offline</li>
                 {data.map((info, index) => (
-                    <li key={index} style={{color: itemCardColor}}><i className="fas fa-check"></i>{info}</li>
+                    <li key={index}><i className={!darkMode ? "fas fa-check" : `fas fa-check ${styles.darkMode}`}></i>{info}</li>
                 ))}
                 {avaiable ? (
-                    <li style={{color: itemCardColor}}><i className="fas fa-check"></i>6 contas</li>
+                    <li><i className={!darkMode ? "fas fa-check" : `fas fa-check ${styles.darkMode}`}></i>6 contas</li>
                 ): (
-                    <li style={{
-                        color: itemCardColor, 
-                        opacity: 0.6
-                    }}><i className="fas fa-times"></i>6 contas</li>
+                    <li className={darkMode ? undefined : styles.darkMode}>
+                        <i className="fas fa-times"></i>
+                        6 contas
+                    </li>
                 )}
             </ul>
 
-            <div style={{background: backgroundBold}} className={styles.priceCardInformations}>
+            <div className={!darkMode ? styles.priceCardInformations : `${styles.priceCardInformations} ${styles.darkMode}`}>
                 <span>1 mês grátis</span>
                 <button type="button">Experimente agora</button>
                 <span>Mais informações</span>

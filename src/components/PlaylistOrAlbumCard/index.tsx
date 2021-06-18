@@ -12,8 +12,7 @@ interface PlaylistOrAlbumCardProps {
 
 export function PlaylistOrAlbumCard({data}: PlaylistOrAlbumCardProps) {
 
-    const {theme} = useTheme();
-    const color = theme.colors.playlistOrAlbumColor
+    const {darkMode} = useTheme();
 
     return (
         <Link href={`/playlist/${data.id}`}>
@@ -27,9 +26,11 @@ export function PlaylistOrAlbumCard({data}: PlaylistOrAlbumCardProps) {
                     </ul>
                 </div>
                 <div className={styles.cardInformations}>
-                    <span style={{color}} className={styles.title}>{data?.label || data?.title}</span>
+                    <span className={!darkMode ? styles.title : `${styles.title} ${styles.darkMode}`}>
+                        {data?.label || data?.title}
+                    </span>
                     {data.nb_tracks !== undefined && ( 
-                        <span style={{color}}>{data.nb_tracks} tracks - {amountAnything.fansAmountMessage(data.fans)}</span>
+                        <span className={!darkMode ? undefined : styles.darkMode}>{data.nb_tracks} tracks - {amountAnything.fansAmountMessage(data.fans)}</span>
                     )}
                 </div>
             </div>

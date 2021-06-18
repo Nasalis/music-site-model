@@ -20,7 +20,7 @@ export default function Artist({artist}: ArtistCardProps) {
     const [artistSong, setArtistSong] = useState([]);
     let albunsList: Albuns[] = [];
 
-    const {theme} = useTheme();
+    const {darkMode} = useTheme();
 
     useEffect(() => {
         async function searchSongs() {
@@ -50,15 +50,14 @@ export default function Artist({artist}: ArtistCardProps) {
     }, Object.create(null))
 
     return (
-        <div style={{background: theme.colors.backgroundBold}} 
-             className={styles.artistContainer}>
+        <div className={!darkMode ? styles.artistContainer : `${styles.artistContainer} ${styles.darkMode}`}>
             <div className={styles.artistProfile}>
                 <img src={artist.picture_medium} alt={artist.name} />
-                <div className={styles.artistProfileInfo}>
-                    <h1 style={{color: theme.colors.artistCardColor}}>
+                <div>
+                    <h1 className={darkMode ? styles.darkMode : undefined}>
                         {artist.name}
                     </h1>
-                    <small style={{color: theme.colors.grayColor4}}>
+                    <small className={darkMode ? styles.darkMode : undefined}>
                         {artist.nb_fan_message}
                     </small>
                     <SongButton smallWidth={true} dataArtist={artistSong} artist={artist}/>
@@ -68,30 +67,38 @@ export default function Artist({artist}: ArtistCardProps) {
             <div className={styles.artistLinks}>
                 <div className={styles.linkContainer}>
                     <Link href={`${artist.id}`}>
-                        <h4 style={{color: theme.colors.grayColor4}}>Discografy</h4>
+                        <h4 className={darkMode ? styles.darkMode : undefined}>
+                            Discografy
+                        </h4>
                     </Link>
                 </div>
 
                 <div className={styles.linkContainer}>
                     <Link href={`${artist.id}/related_artist`}>
-                        <h4 style={{color: theme.colors.grayColor4}}>Related artists</h4>
+                        <h4 className={darkMode ? styles.darkMode : undefined}>
+                            Related artists
+                        </h4>
                     </Link>
                 </div>
                 <div className={styles.linkContainer}>
                     <Link href={`${artist.id}/related_playlist`}>
-                        <h4 style={{color: theme.colors.grayColor4}}>Related playlist</h4>
+                        <h4 className={darkMode ? styles.darkMode : undefined}>
+                            Related playlist
+                        </h4>
                     </Link>
                 </div>
                 <div className={styles.linkContainer}>
                     <Link href={`${artist.id}/biography`}>
-                        <h4 style={{color: theme.colors.grayColor4}}>Biography</h4>
+                        <h4 className={darkMode ? styles.darkMode : undefined}>
+                            Biography
+                        </h4>
                     </Link>
                 </div>
             </div>
             
             <div className={styles.albunsCollection}>
                 <div className={styles.albunsHeader}>
-                    <h2 style={{color: theme.colors.grayColor4}}>Albuns</h2>
+                    <h2 className={darkMode ? styles.darkMode : undefined}>Albuns</h2>
                     <div className={styles.barDetail}></div>
                 </div>
                 <div className={styles.albunsCardsArea}>

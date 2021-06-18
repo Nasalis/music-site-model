@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
 
-  const {theme} = useTheme();
+  const {darkMode} = useTheme();
 
   const [artistList, setArtistList] = useState([]);
   const [albunsList, setAlbunsList] = useState([]);
@@ -67,16 +67,15 @@ export default function Home() {
   }, [])
 
   return (
-    <div style={{background: theme.colors.backgroundBold}} className={styles.homeContainer}>
+    <div className={!darkMode ? styles.homeContainer : `${styles.homeContainer} ${styles.darkMode}`}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <section className={styles.songsWeekContainer}>
-        <h1 
-          style={{color: theme.colors.text}}
-        >Top Songs of the Week</h1>
+        <h1 className={darkMode ? styles.darkMode : undefined}>
+          Top Songs of the Week</h1>
           <div className={styles.listSongsWeek}>
             <div className={styles.songsWeek}>
               {songs.songsOfWeek.map((song, index) => (

@@ -15,7 +15,7 @@ interface SongButtonProps {
 
 export default function SongButton({smallWidth, dataSong, dataArtist, artist}: SongButtonProps) {
 
-    const {theme} = useTheme();
+    const {darkMode} = useTheme();
 
     const {playlist, isPlaying} = usePlayer();
     const songList =  dataSong !== undefined ? dataSong.tracks.data : dataArtist
@@ -31,16 +31,16 @@ export default function SongButton({smallWidth, dataSong, dataArtist, artist}: S
                 {isPlaying ? "Playing" : 'Listen'}
                 <i className="far fa-play-circle"></i>
             </button>
-            <div>
-                <button>
-                    <i style={{color: theme.colors.grayColor4}} className="fas fa-heart"></i>
-                </button>
-                <button>
-                    <i style={{color: theme.colors.grayColor4}} className="fas fa-share-square"></i>
-                </button>
-                <button>
-                    <i style={{color: theme.colors.grayColor4}} className="fas fa-ellipsis-h"></i>
-                </button>
+            <div className={styles.optionsButtonsContainer}>
+                <div className={styles.optionButton}>
+                    <i className={!darkMode ? "fas fa-heart" : `fas fa-heart ${styles.darkMode}`}></i>
+                </div>
+                <div className={styles.optionButton}>
+                    <i className={!darkMode ? "fas fa-share-square" : `fas fa-share-square ${styles.darkMode}`}></i>
+                </div>
+                <div className={styles.optionButton}>
+                    <i className={!darkMode ? "fas fa-ellipsis-h" : `fas fa-ellipsis-h ${styles.darkMode}`}></i>
+                </div>
             </div>
         </div>
     )

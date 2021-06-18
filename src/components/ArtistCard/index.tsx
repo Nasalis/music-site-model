@@ -17,7 +17,7 @@ interface ArtistCardProps {
 
 export function ArtistCard({artist}: ArtistCardProps) {
 
-    const {theme} = useTheme();
+    const {darkMode} = useTheme();
 
     return (
         <Link href={`/artist/${artist.id}`}>
@@ -26,12 +26,10 @@ export function ArtistCard({artist}: ArtistCardProps) {
                     <img src={artist.picture_medium} alt={artist.name}/>
                     <i className="fas fa-heart"></i>
                 </div>
-                <h4 style={{
-                    color: theme.colors.text
-                }} >{artist.name}</h4>
+                <h4 className={!darkMode ? undefined : styles.darkMode}>{artist.name}</h4>
                 <div className={styles.cardInformations}>
-                    <span style={{color: theme.colors.text}}>Albuns: {artist.nb_album}</span>
-                    <span style={{color: theme.colors.text}}>
+                    <span className={!darkMode ? undefined : styles.darkMode}>Albuns: {artist.nb_album}</span>
+                    <span className={!darkMode ? undefined : styles.darkMode}>
                         {amountAnything.fansAmountMessage(artist.nb_fan)}
                     </span>
                 </div>

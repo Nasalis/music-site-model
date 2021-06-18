@@ -17,10 +17,8 @@ interface AlbunsProps {
 
 export default function Playlist({album}: AlbunsProps) {
 
-    const {theme} = useTheme();
+    const {darkMode} = useTheme();
     const {play} = usePlayer();
-
-    const color = theme.colors.playlistOrAlbumColor
 
     useEffect(() => {
         async function getInfo() {
@@ -40,17 +38,18 @@ export default function Playlist({album}: AlbunsProps) {
     }, [album])
 
     return (
-        <div style={{background: theme.colors.backgroundBold}} className={styles.playlistContainer}>
+        <div className={!darkMode ? styles.playlistContainer : `${styles.playlistContainer} ${styles.darkMode}`}>
             <header className={styles.playlistHeader}>
                 <img src={album.cover_medium} alt="" />
                 <div className={styles.playlistInfo}>
-                    <h2 style={{color: theme.colors.text}}>{album?.label}</h2>
+                    <h2 className={darkMode ? styles.darkMode : undefined}>
+                        {album?.label}
+                    </h2>
                     <div>
-
                         <img src={album.artist.picture_small} alt="" />
-                        <span style={{color}}>{album?.artist?.name}</span>
+                        <span className={darkMode ? styles.darkMode : undefined}>{album?.artist?.name}</span>
                     </div>
-                    <span style={{color}}>
+                    <span className={darkMode ? styles.darkMode : undefined}>
                         {album.nb_tracks} faixas | {album.durationAsString} min | {album.release_date} | {amountAnything.fansAmountMessage(album.fans)}
                     </span>
                 </div>
@@ -59,46 +58,44 @@ export default function Playlist({album}: AlbunsProps) {
             <div className={styles.datagridContainer}>
                 <div className={styles.datagridToolBar}>
                     <div className={styles.playlistSongsContainer}>
-
                         <SongButton smallWidth={false} dataSong={album}/>
-
                     </div>
                 </div>
                 
                 <div className={`${styles.datagridRow} ${styles.isFirst}`}>
                     <div className={styles.dataContentIndex}>
-                        <span style={{color: theme.colors.grayColor4}}>#</span>
+                        <span className={darkMode ? styles.darkMode : undefined}>#</span>
                     </div>
                     <div className={styles.dataFavorite}>
                     </div>
                     <div className={styles.dataTrack}>
-                        <span style={{color: theme.colors.grayColor4}}>Faixa</span>
+                        <span className={darkMode ? styles.darkMode : undefined}>Faixa</span>
                     </div>
                     <div className={styles.dataContentDuration}>
-                        <span style={{color: theme.colors.grayColor4}}>D.</span>
+                        <span className={darkMode ? styles.darkMode : undefined}>D.</span>
                     </div>
                 </div>
 
                 {album?.tracks?.data.map((song, index) => (
                     <div key={song.title} className={`${styles.datagridRow} ${styles.isSong}`}>
                         <div className={styles.dataContentIndex}>
-                            <span style={{color: theme.colors.grayColor4}}>
+                            <span className={darkMode ? styles.darkMode : undefined}>
                                 {index+1}
                             </span>
                         </div>
                         <div className={styles.dataFavorite}>
-                            <i style={{color: theme.colors.grayColor4}} className="far fa-heart"></i>
+                            <i className={!darkMode ? "far fa-heart" : `far fa-heart ${styles.darkMode}`}></i>
                         </div>
                         <div 
                             className={styles.dataTrack}
                             onClick={() => play(song, album.cover_medium)}
                         >
-                            <span style={{color: theme.colors.grayColor4}}>
+                            <span className={darkMode ? styles.darkMode : undefined}>
                                 {song.title}
                             </span>
                         </div>
                         <div className={styles.dataContentDuration}>
-                            <span style={{color: theme.colors.grayColor4}}>
+                            <span className={darkMode ? styles.darkMode : undefined}>
                                 {convertSecondsToMinutes(song.duration)}
                             </span>
                         </div>

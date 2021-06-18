@@ -11,7 +11,7 @@ export function Slider({length, children}: SliderProps) {
 
     const [scrollX, setScrollX] = useState(-40);
 
-    const {theme} = useTheme();
+    const {darkMode} = useTheme();
 
     const handleLeftArrow = () => {
         let xAxis = scrollX + Math.round(window.innerWidth / 2);
@@ -36,9 +36,7 @@ export function Slider({length, children}: SliderProps) {
 
     return (
      <section className={styles.artistProfiles}>
-        <h1 style={{
-            color: theme.colors.text
-        }}>Playlists that may interest you</h1>
+        <h1 className={darkMode ? styles.darkMode : undefined}>Playlists that may interest you</h1>
           <div className={styles.artistRowLeft} onClick={handleLeftArrow}>
             <i className="fas fa-chevron-left"></i>
           </div>

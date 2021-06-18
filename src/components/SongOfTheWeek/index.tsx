@@ -16,7 +16,7 @@ export default function SongOfTheWeek({song}: SongProps) {
 
     const [playActive, setPlayActive] = useState(false)
 
-    const {theme} = useTheme();
+    const {darkMode} = useTheme();
 
     const playActiveTrue = () => setPlayActive(true)
     const playActiveFalse = () => setPlayActive(false)
@@ -29,9 +29,9 @@ export default function SongOfTheWeek({song}: SongProps) {
                 <img src={song.image} alt={song.song}/>
                 <span className={playActive ? styles.active : ''}>Listen Now</span>
             </div>
-            <p 
-                style={{color: theme.colors.text}}
-            >{song.artist} - {song.song}</p>
+            <p className={darkMode ? styles.darkMode : undefined}>
+                {song.artist} - {song.song}
+            </p>
         </div>
     )
 }
