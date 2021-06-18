@@ -16,6 +16,12 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        color: var(--color-text-light);
+
+        &.darkMode {
+            color: var(--color-text-dark);
+        }
     }
 }
 

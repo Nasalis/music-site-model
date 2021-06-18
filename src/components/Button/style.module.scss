@@ -7,6 +7,7 @@
         i {
             font-size: 1rem;
             margin-left: 1.2rem;
+            color: rgb(255, 255, 255);
         }
 
         display: inline-flex;
@@ -48,8 +49,16 @@
             }
         }
     }
+}
 
-    button:not(.playingButton) {
+.optionsButtonsContainer {
+    display: flex;
+
+    .optionButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2rem;
         width: 2.2rem;
         height: 2.2rem;
         border: 1px #c5c5c7 solid;
@@ -62,6 +71,26 @@
         &:hover {
             filter: brightness(0.9);
         }
+
+        i {
+            color: var(--color-gray-dark);
+
+            &.darkMode {
+                color: var(--color-gray-light);
+            }
+        }
     }
 }
 
+@media (max-width: 332px) {
+    .playlistSongsButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .optionsButtonsContainer {
+        margin-top: 1rem;
+    }
+}

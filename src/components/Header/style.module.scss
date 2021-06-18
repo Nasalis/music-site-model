@@ -5,10 +5,13 @@
 
     width: 100%;
 
+    background-color: var(--color-background-light);
     box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.226);
     z-index: 999999;
 
-
+    &.darkActive {
+        background-color: var(--color-background-dark);
+    }
 }
 
 .menu {
@@ -54,6 +57,11 @@
         i {
             font-size: 1.2rem;
             cursor: pointer;
+            color: var(--color-text-light-v2);
+
+            &.darkActive {
+                color: var(--color-text-dark-v2),
+            }
         }
 
         a {
@@ -62,6 +70,12 @@
             font-weight: bold;
             text-transform: uppercase;
             transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            color: var(--color-text-light-v2);
+
+            &.darkActive {
+                color: var(--color-text-dark-v2),
+            }
 
             &::after {
                 position: absolute;

@@ -49,18 +49,27 @@
 }
 
 .priceCardDetails {
-    background-color: rgb(255, 255, 255);
+    background: var(--color-background-light-v2);
     padding: 2rem 1rem;
     line-height: 40px;
     height: 28rem;
     width: 100%;
+
+    &.darkMode {
+        background: var(--color-background-dark-v2);
+    }
+
 
     li {
         font-weight: 600;
         font-size: 0.9rem;
         letter-spacing: 0.4px;
         margin: 0.1rem 1rem;
-        color: #4e4c4c;
+        color: #8d8a8a;
+
+        &.darkMode {
+            color:#b4b3b3,
+        }
 
 
         i {
@@ -77,6 +86,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.4rem 0;
+
+    background: var(--color-background-light-footer);
+
+    &.darkMode {
+        background: var(--color-background-dark-footer);
+    }
 
     span {
         font-size: 1.2rem;

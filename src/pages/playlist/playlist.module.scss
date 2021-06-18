@@ -1,5 +1,11 @@
 .playlistContainer {
     padding: 2rem;
+
+    background-color: var(--color-backgroundBold-light);
+
+    &.darkMode {
+        background-color: var(--color-backgroundBold-dark);
+    }
 }
 
 .playlistHeader {
@@ -35,6 +41,12 @@
         h2 {
             margin-bottom: 1rem;
             font-size: 1.2rem;
+
+            color: var(--color-text-light);
+
+            &.darkMode {
+                color: var(--color-text-dark);
+            }
         }
 
         div {
@@ -48,12 +60,24 @@
 
             span {
                 margin-left: 0.6rem;
+
+                color: var(--color-text-dark-v4);
+
+                &.darkMode {
+                    color: var(--color-text-light-v4);
+                }
             }
         }
 
         & > span {
             margin-top: 1rem;
             font-size: 0.8rem;
+
+            color: var(--color-text-dark-v4);
+
+            &.darkMode {
+                color: var(--color-text-light-v4);
+            }
         }
     }
 }
@@ -128,6 +152,14 @@
     font-weight: 400;
     table-layout: fixed;
     width: 100%;
+
+    span, i {
+        color: var(--color-gray-dark);
+
+        &.darkMode {
+            color: var(--color-gray-light);
+        }
+    }
 }
 
 .datagridToolBar {
@@ -176,6 +208,7 @@
 
     .dataFavorite {
         width: 2.0rem;
+        cursor: pointer;
     }
 
     .dataTrack {

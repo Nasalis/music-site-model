@@ -1,5 +1,12 @@
 .artistContainer {
     padding: 2rem;
+    width: 100%;
+
+    background-color: var(--color-backgroundBold-light);
+
+    &.darkMode {
+        background-color: var(--color-backgroundBold-dark);
+    }
 }
 
 .artistProfile {
@@ -15,9 +22,22 @@
     }
 
     div {
-        
+
+        h1 {
+            color: var(--color-text-dark-v3);
+
+            &.darkMode {
+                color: var(--color-text-light-v3);
+            }
+        }
+
         small {
             font-size: 0.9rem;
+            color: var(--color-gray-dark);
+
+            &.darkMode {
+                color: var(--color-gray-light);
+            }
         }
     }
 }
@@ -40,6 +60,12 @@
         h4 {
             font-weight: 500;
             margin-bottom: 0.6rem;
+
+            color: var(--color-gray-dark);
+
+            &.darkMode {
+                color: var(--color-gray-light);
+            }
         }
 
         &::after {
@@ -82,6 +108,12 @@
         h2 {
             font-size: 1.6rem;
             margin-right: 1rem;
+
+            color: var(--color-gray-dark);
+
+            &.darkMode {
+                color: var(--color-gray-light);
+            }
         }
     
         .barDetail {
@@ -128,5 +160,38 @@
 
     .artistLinks {
         width: 100%;
+    }
+}
+
+@media (max-width: 660px) {
+    .albunsCardsArea {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-self: center;
+    }
+}
+
+
+@media (max-width: 452px) {
+    .artistProfile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        div {
+            h1 {
+                text-align: center;
+            }
+
+            small {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+        }
     }
 }
