@@ -19,7 +19,7 @@
         .iconList {
             background: rgba(134, 133, 133, 0.068);
 
-            i {
+            li {
                 &:not(:nth-child(1)) {
                     opacity: 1;
                 }
@@ -50,6 +50,12 @@
 
         transition: background var(--time) ease;
 
+        li {
+            &:not(:nth-child(1)) {
+                opacity: 0;
+            }
+        }
+
         i {
             color: #121212;
             background-color: #fff;
@@ -58,10 +64,6 @@
             padding: 0.4rem;
             margin: 0.5rem;
             transition: all var(--time) ease;
-
-            &:not(:nth-child(1)) {
-                opacity: 0;
-            }
 
             &:hover {
                 transform: rotate(360deg);

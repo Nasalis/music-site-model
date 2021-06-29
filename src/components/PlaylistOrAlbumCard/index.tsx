@@ -20,9 +20,9 @@ export function PlaylistOrAlbumCard({data}: PlaylistOrAlbumCardProps) {
                 <div className={styles.header}>
                     <img src={data.cover_medium} alt=""/>
                     <ul className={styles.iconList}>
-                        <i className="fas fa-play"></i>
-                        <i className="fas fa-heart"></i>
-                        <i className="fas fa-ellipsis-h"></i>
+                        <li><i className="fas fa-play"></i></li>
+                        <li><i className="fas fa-heart"></i></li>
+                        <li><i className="fas fa-ellipsis-h"></i></li>
                     </ul>
                 </div>
                 <div className={styles.cardInformations}>

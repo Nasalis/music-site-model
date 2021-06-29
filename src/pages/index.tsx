@@ -29,7 +29,7 @@ export default function Home() {
         artistInfo.push(fetch(getArtist(i), {
           "method": "GET",
           "headers": {
-            "x-rapidapi-key": apiInfo.API_KEY,
+            "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
             "x-rapidapi-host": apiInfo.HOST
           }
         }).then(reponse => reponse.json()));
@@ -53,7 +53,7 @@ export default function Home() {
         albunsInfo.push(fetch(getAlbuns(id), {
           "method": "GET",
           "headers": {
-            "x-rapidapi-key": apiInfo.API_KEY,
+            "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
             "x-rapidapi-host": apiInfo.HOST
           }
         }).then(response => response.json()));
