@@ -3,14 +3,17 @@ import React, { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import styles from './playlist.module.scss';
+
 import { useTheme } from '../../components/ThemeContext';
+import { usePlayer } from '../../components/PlayerContext';
+
 import { apiInfo } from '../../components/utils/api';
 import { convertSecondsToMinutes } from '../../components/utils/convertTime';
-import { usePlayer } from '../../components/PlayerContext';
 import { amountAnything } from '../../components/utils/numberAmountFormated';
-import SongButton from '../../components/Button';
-
 import {Albuns} from '../../components/utils/types'
+
+import SongButton from '../../components/Button';
+import SongsList from '../../components/SongsList';
 interface AlbunsProps {
     album: Albuns
 }
@@ -61,46 +64,9 @@ export default function Playlist({album}: AlbunsProps) {
                         <SongButton smallWidth={false} dataSong={album}/>
                     </div>
                 </div>
-                
-                <div className={`${styles.datagridRow} ${styles.isFirst}`}>
-                    <div className={styles.dataContentIndex}>
-                        <span className={darkMode ? styles.darkMode : undefined}>#</span>
-                    </div>
-                    <div className={styles.dataFavorite}>
-                    </div>
-                    <div className={styles.dataTrack}>
-                        <span className={darkMode ? styles.darkMode : undefined}>Faixa</span>
-                    </div>
-                    <div className={styles.dataContentDuration}>
-                        <span className={darkMode ? styles.darkMode : undefined}>D.</span>
-                    </div>
-                </div>
 
-                {album?.tracks?.data.map((song, index) => (
-                    <div key={song.title} className={`${styles.datagridRow} ${styles.isSong}`}>
-                        <div className={styles.dataContentIndex}>
-                            <span className={darkMode ? styles.darkMode : undefined}>
-                                {index+1}
-                            </span>
-                        </div>
-                        <div className={styles.dataFavorite}>
-                            <i className={!darkMode ? "far fa-heart" : `far fa-heart ${styles.darkMode}`}></i>
-                        </div>
-                        <div 
-                            className={styles.dataTrack}
-                            onClick={() => play(song, album.cover_medium)}
-                        >
-                            <span className={darkMode ? styles.darkMode : undefined}>
-                                {song.title}
-                            </span>
-                        </div>
-                        <div className={styles.dataContentDuration}>
-                            <span className={darkMode ? styles.darkMode : undefined}>
-                                {convertSecondsToMinutes(song.duration)}
-                            </span>
-                        </div>
-                    </div>
-                ))}
+                <SongsList album={album}/>
+                
             </div>
         </div>
     )

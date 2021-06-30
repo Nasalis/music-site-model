@@ -174,80 +174,6 @@
     width: 100%;
 }
 
-.datagridRow {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-
-    height: 4rem;
-
-    transition: background var(--time) ease;
-
-    &:nth-child(1) {
-        margin: 1rem 0;
-    }
-
-    padding-left: 16px;
-    border-radius: 4px;
-
-    &::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: '';
-        width: 100%;
-        height: 1px;
-        background-color: #aeaeb1;
-    }
-
-    .dataContentIndex {
-        width: 3.2rem;
-    }
-
-    .dataFavorite {
-        width: 2.0rem;
-        cursor: pointer;
-    }
-
-    .dataTrack {
-        flex: 1;
-        margin-left: 1rem;
-        cursor: pointer;
-    }
-
-    div {
-        width: 3.2rem;
-        height: 2.8rem;
-        align-items: center;
-        justify-content: center;
-
-        font-size: 0.85rem;
-
-
-        span, i {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            height: 100%;
-        }
-        
-    }
-
-    &.isFirst {
-        .dataTrack {
-            text-transform: uppercase;
-        }
-    }
-
-    &.isSong:hover {
-        background-color: rgba(133, 133, 133, 0.171);
-    }
-    
-}
-
-
 @media (max-width: 750px) {
     .playlistContainer {
         margin-top: 5rem;
@@ -300,14 +226,3 @@
     }
 }
 
-@media (max-width: 300px) {
-
-    .dataTrack {
-        flex: 1;
-        margin-left: 1rem;
-    }
-
-    .dataContentDuration {
-        display: none;
-    }
-}

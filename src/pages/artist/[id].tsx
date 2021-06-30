@@ -6,10 +6,13 @@ import { amountAnything } from '../../components/utils/numberAmountFormated';
 
 import {Albuns, ArtistPage} from '../../components/utils/types'
 
-import SongButton from '../../components/Button';
 import Link from 'next/link';
 import { PlaylistOrAlbumCard } from '../../components/PlaylistOrAlbumCard';
 import { useTheme } from '../../components/ThemeContext';
+
+import SongButton from '../../components/Button';
+import SongsList from '../../components/SongsList';
+import BarTitle from '../../components/BarTitle';
 
 interface ArtistCardProps {
     artist: ArtistPage,
@@ -95,12 +98,16 @@ export default function Artist({artist}: ArtistCardProps) {
                     </Link>
                 </div>
             </div>
+
+            <div className={styles.topSongsGridContainer}>
+                <BarTitle title={"Top Songs"}/>
+                <div className={styles.topSongsList}>
+                    <SongsList songs={artistSong}/>
+                </div>
+            </div>
             
             <div className={styles.albunsCollection}>
-                <div className={styles.albunsHeader}>
-                    <h2 className={darkMode ? styles.darkMode : undefined}>Albuns</h2>
-                    <div className={styles.barDetail}></div>
-                </div>
+                <BarTitle title={"Albuns"}/>
                 <div className={styles.albunsCardsArea}>
                     {albunsList.map((album, index) => (
                         <PlaylistOrAlbumCard key={index} data={album}/>
