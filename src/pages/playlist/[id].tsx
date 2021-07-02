@@ -5,7 +5,6 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import styles from './playlist.module.scss';
 
 import { useTheme } from '../../components/ThemeContext';
-import { usePlayer } from '../../components/PlayerContext';
 
 import { apiInfo } from '../../components/utils/api';
 import { convertSecondsToMinutes } from '../../components/utils/convertTime';
@@ -14,6 +13,7 @@ import {Albuns} from '../../components/utils/types'
 
 import SongButton from '../../components/Button';
 import SongsList from '../../components/SongsList';
+import Link from 'next/link';
 interface AlbunsProps {
     album: Albuns
 }
@@ -21,7 +21,6 @@ interface AlbunsProps {
 export default function Playlist({album}: AlbunsProps) {
 
     const {darkMode} = useTheme();
-    const {play} = usePlayer();
 
     useEffect(() => {
         async function getInfo() {
@@ -50,7 +49,9 @@ export default function Playlist({album}: AlbunsProps) {
                     </h2>
                     <div>
                         <img src={album.artist.picture_small} alt="" />
-                        <span className={darkMode ? styles.darkMode : undefined}>{album?.artist?.name}</span>
+                        <Link href={`/artist/${album.artist.id}`}>
+                            <span className={darkMode ? styles.darkMode : undefined}>{album?.artist?.name}</span>
+                        </Link>
                     </div>
                     <span className={darkMode ? styles.darkMode : undefined}>
                         {album.nb_tracks} faixas | {album.durationAsString} min | {album.release_date} | {amountAnything.fansAmountMessage(album.fans)}
