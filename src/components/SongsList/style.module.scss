@@ -17,10 +17,6 @@
         }
     }
 
-    &:nth-child(1) {
-        margin: 1rem 0;
-    }
-
     padding-left: 16px;
     border-radius: 4px;
 
@@ -47,6 +43,10 @@
         flex: 1;
         margin-left: 1rem;
         cursor: pointer;
+    }
+
+    .dataContentDuration {
+        margin-right: 1.2rem;
     }
 
     div {
