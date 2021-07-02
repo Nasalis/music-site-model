@@ -30,10 +30,10 @@ export default function SongsList({album, songs}: AlbunsProps) {
                 <div className={styles.dataFavorite}>
                 </div>
                 <div className={styles.dataTrack}>
-                    <span className={darkMode ? styles.darkMode : undefined}>Faixa</span>
+                    <span className={darkMode ? styles.darkMode : undefined}>Track</span>
                 </div>
                 <div className={styles.dataContentDuration}>
-                    <span className={darkMode ? styles.darkMode : undefined}>D.</span>
+                    <span className={darkMode ? styles.darkMode : undefined}>Duration</span>
                 </div>
             </div>
 
@@ -49,7 +49,7 @@ export default function SongsList({album, songs}: AlbunsProps) {
                     </div>
                     <div 
                         className={styles.dataTrack}
-                        onClick={() => play(song, song.album.cover_medium)}
+                        onClick={() => play(song, album ? album.cover_medium : song.album.cover_medium)}
                     >
                         <span className={darkMode ? styles.darkMode : undefined}>
                             {song.title}
