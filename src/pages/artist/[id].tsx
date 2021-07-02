@@ -101,7 +101,7 @@ export default function Artist({artist}: ArtistCardProps) {
 
             <div className={styles.topSongsGridContainer}>
                 <BarTitle title={"Top Songs"}/>
-                <div className={styles.topSongsList}>
+                <div className={darkMode ? `${styles.topSongsList} ${styles.darkMode}` : styles.topSongsList}>
                     <SongsList songs={artistSong}/>
                 </div>
             </div>
