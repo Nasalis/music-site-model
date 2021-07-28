@@ -45,7 +45,7 @@ export default function Playlist({album}: AlbunsProps) {
                 <img src={album.cover_medium} alt="" />
                 <div className={styles.playlistInfo}>
                     <h2 className={darkMode ? styles.darkMode : undefined}>
-                        {album?.label}
+                        {album?.title}
                     </h2>
                     <div>
                         <img src={album.artist.picture_small} alt="" />
@@ -104,6 +104,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     const album = {
         id: data.id,
+        title: data.title,
         label: data.label,
         artist: data.artist,
         nb_tracks: data.nb_tracks,

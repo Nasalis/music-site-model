@@ -31,6 +31,7 @@ export interface Albuns {
     label: string,
     title: string,
     artist: Artist,
+    artistPage: ArtistPage,
     nb_tracks: number,
     duration: number,
     durationAsString: string
