@@ -48,7 +48,7 @@ export default function Playlist({album}: AlbunsProps) {
                         {album?.title}
                     </h2>
                     <div>
-                        <img src={album.artist.picture_small ?? null} alt="" />
+                        <img src={album.artist?.picture_small} alt="" />
                         <Link href={`/artist/${album.artist.id}`}>
                             <span className={darkMode ? styles.darkMode : undefined}>{album?.artist?.name}</span>
                         </Link>
