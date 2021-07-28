@@ -30,7 +30,7 @@ export default function Artist({artist}: ArtistCardProps) {
             const data = await fetch(`${apiInfo.BASE_URL}/artist/${artist?.id}/top?limit=20`, {
                 "method": "GET",
                 "headers": {
-                    "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
+                    "x-rapidapi-key": apiInfo.API_KEY,
                     "x-rapidapi-host": apiInfo.HOST,
                 }
             })
@@ -142,7 +142,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     const data = await fetch(`${apiInfo.BASE_URL}/artist/${id}`, {
         "method": "GET",
         "headers": {
-        "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
+        "x-rapidapi-key": apiInfo.API_KEY,
         "x-rapidapi-host": apiInfo.HOST
         }
     }).then(data => data.json());

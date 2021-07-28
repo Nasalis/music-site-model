@@ -37,7 +37,7 @@ export default function SongsList({album, songs}: AlbunsProps) {
                 </div>
             </div>
 
-            {songsList.map((song, index) => (
+            {songsList?.map((song, index) => (
                 <div key={song.title} className={`${styles.datagridRow} ${styles.isSong}`}>
                     <div className={styles.dataContentIndex}>
                         <span className={darkMode ? styles.darkMode : undefined}>
@@ -49,15 +49,15 @@ export default function SongsList({album, songs}: AlbunsProps) {
                     </div>
                     <div 
                         className={styles.dataTrack}
-                        onClick={() => play(song, album ? album.cover_medium : song.album.cover_medium)}
+                        onClick={() => play(song, album ? album?.cover_medium : song?.album.cover_medium)}
                     >
                         <span className={darkMode ? styles.darkMode : undefined}>
-                            {song.title}
+                            {song?.title}
                         </span>
                     </div>
                     <div className={styles.dataContentDuration}>
                         <span className={darkMode ? styles.darkMode : undefined}>
-                            {convertSecondsToMinutes(song.duration)}
+                            {convertSecondsToMinutes(song?.duration)}
                         </span>
                     </div>
                 </div>
