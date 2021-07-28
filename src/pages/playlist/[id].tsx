@@ -103,17 +103,17 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 
     const album = {
-        id: data.id,
-        title: data.title,
-        label: data.label,
-        artist: data.artist,
-        nb_tracks: data.nb_tracks,
-        duration: data.duration,
-        durationAsString: convertSecondsToMinutes(data.duration),
-        fans: data.fans,
-        release_date: data.release_date,
-        tracks: data.tracks,
-        cover_medium: data.cover_medium,
+        id: data.id ?? null,
+        title: data.title ?? null,
+        label: data.label ?? null,
+        artist: data.artist ?? null,
+        nb_tracks: data.nb_tracks ?? null,
+        duration: data.duration ?? null,
+        durationAsString: convertSecondsToMinutes(data.duration) ?? null,
+        fans: data.fans ?? null,
+        release_date: data.release_date ?? null,
+        tracks: data.tracks ?? null,
+        cover_medium: data.cover_medium ?? null,
     }
 
     return {
