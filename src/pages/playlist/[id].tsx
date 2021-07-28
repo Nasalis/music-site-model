@@ -30,7 +30,7 @@ export default function Playlist({album}: AlbunsProps) {
             const data = await fetch(`${apiInfo.BASE_URL}/album/${album.id}`,{
                 "method": "GET",
                 "headers": {
-                    "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
+                    "x-rapidapi-key": "d066035e6emshe6ee373b4813fbep19e023jsn185d48b48ca4",
                     "x-rapidapi-host": apiInfo.HOST
                 }
             }).then(response => response.json())
@@ -45,7 +45,7 @@ export default function Playlist({album}: AlbunsProps) {
                 <img src={album.cover_medium} alt="" />
                 <div className={styles.playlistInfo}>
                     <h2 className={darkMode ? styles.darkMode : undefined}>
-                        {album?.label}
+                        {album?.title}
                     </h2>
                     <div>
                         <img src={album.artist.picture_small} alt="" />
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     const data = await fetch(`${apiInfo.BASE_URL}/album/${id}`, {
         "method": "GET",
         "headers": {
-        "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
+        "x-rapidapi-key": "d066035e6emshe6ee373b4813fbep19e023jsn185d48b48ca4",
         "x-rapidapi-host": apiInfo.HOST
         }
     }).then(data => data.json());
@@ -104,6 +104,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     const album = {
         id: data.id,
+        title: data.title,
         label: data.label,
         artist: data.artist,
         nb_tracks: data.nb_tracks,
