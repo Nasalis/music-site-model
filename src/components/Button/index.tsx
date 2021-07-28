@@ -18,8 +18,8 @@ export default function SongButton({smallWidth, dataSong, dataArtist, artist}: S
     const {darkMode} = useTheme();
 
     const {playlist, isPlaying} = usePlayer();
-    const songList =  dataSong !== undefined ? dataSong.tracks.data : dataArtist
-    const image = dataSong !== undefined ? dataSong.cover_medium : artist.picture_medium
+    const songList =  dataSong !== undefined ? dataSong?.tracks?.data : dataArtist
+    const image = dataSong !== undefined ? dataSong?.cover_medium : artist?.picture_medium
     
     return (
         <div className={styles.playlistSongsButtons}>

@@ -19,7 +19,7 @@ export default function SongsList({album, songs}: AlbunsProps) {
     const {darkMode} = useTheme();
     const {play} = usePlayer();
 
-    const songsList = album ? album.tracks.data : songs;
+    const songsList = album ? album?.tracks?.data : songs;
 
     return (
         <>
