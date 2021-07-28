@@ -27,7 +27,7 @@ export function PlaylistOrAlbumCard({data}: PlaylistOrAlbumCardProps) {
                 </div>
                 <div className={styles.cardInformations}>
                     <span className={!darkMode ? styles.title : `${styles.title} ${styles.darkMode}`}>
-                        {data?.label || data?.title}
+                        {data?.title || data?.label}
                     </span>
                     {data.nb_tracks !== undefined && ( 
                         <span className={!darkMode ? undefined : styles.darkMode}>{data.nb_tracks} tracks - {amountAnything.fansAmountMessage(data.fans)}</span>
