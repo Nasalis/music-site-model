@@ -27,7 +27,7 @@ export default function Artist({artist}: ArtistCardProps) {
 
     useEffect(() => {
         async function searchSongs() {
-            const data = await fetch(`${apiInfo.BASE_URL}/artist/${artist.id}/top?limit=20`, {
+            const data = await fetch(`${apiInfo.BASE_URL}/artist/${artist?.id}/top?limit=20`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
@@ -42,7 +42,7 @@ export default function Artist({artist}: ArtistCardProps) {
 
     async function fillAbunsList() {
         artistSong.map(song => {
-            albunsList.push(song.album)
+            albunsList.push(song?.album)
         })
     }
 
@@ -55,13 +55,13 @@ export default function Artist({artist}: ArtistCardProps) {
     return (
         <div className={!darkMode ? styles.artistContainer : `${styles.artistContainer} ${styles.darkMode}`}>
             <div className={styles.artistProfile}>
-                <img src={artist.picture_medium} alt={artist.name} />
+                <img src={artist?.picture_medium} alt={artist?.name} />
                 <div>
                     <h1 className={darkMode ? styles.darkMode : undefined}>
-                        {artist.name}
+                        {artist?.name}
                     </h1>
                     <small className={darkMode ? styles.darkMode : undefined}>
-                        {artist.nb_fan_message}
+                        {artist?.nb_fan_message}
                     </small>
                     <SongButton smallWidth={true} dataArtist={artistSong} artist={artist}/>
                 </div>
@@ -69,7 +69,7 @@ export default function Artist({artist}: ArtistCardProps) {
 
             <div className={styles.artistLinks}>
                 <div className={styles.linkContainer}>
-                    <Link href={`${artist.id}`}>
+                    <Link href={`${artist?.id}`}>
                         <h4 className={darkMode ? styles.darkMode : undefined}>
                             Discografy
                         </h4>
@@ -77,21 +77,21 @@ export default function Artist({artist}: ArtistCardProps) {
                 </div>
 
                 <div className={styles.linkContainer}>
-                    <Link href={`${artist.id}/related_artist`}>
+                    <Link href={`${artist?.id}/related_artist`}>
                         <h4 className={darkMode ? styles.darkMode : undefined}>
                             Related artists
                         </h4>
                     </Link>
                 </div>
                 <div className={styles.linkContainer}>
-                    <Link href={`${artist.id}/related_playlist`}>
+                    <Link href={`${artist?.id}/related_playlist`}>
                         <h4 className={darkMode ? styles.darkMode : undefined}>
                             Related playlist
                         </h4>
                     </Link>
                 </div>
                 <div className={styles.linkContainer}>
-                    <Link href={`${artist.id}/biography`}>
+                    <Link href={`${artist?.id}/biography`}>
                         <h4 className={darkMode ? styles.darkMode : undefined}>
                             Biography
                         </h4>

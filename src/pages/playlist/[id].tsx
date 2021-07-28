@@ -27,7 +27,7 @@ export default function Playlist({album}: AlbunsProps) {
             if(album.type !== "album")
                 return;
 
-            const data = await fetch(`${apiInfo.BASE_URL}/album/${album.id}`,{
+            const data = await fetch(`${apiInfo.BASE_URL}/album/${album?.id}`,{
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
@@ -42,19 +42,19 @@ export default function Playlist({album}: AlbunsProps) {
     return (
         <div className={!darkMode ? styles.playlistContainer : `${styles.playlistContainer} ${styles.darkMode}`}>
             <header className={styles.playlistHeader}>
-                <img src={album.cover_medium} alt="" />
+                <img src={album?.cover_medium} alt="" />
                 <div className={styles.playlistInfo}>
                     <h2 className={darkMode ? styles.darkMode : undefined}>
                         {album?.title}
                     </h2>
                     <div>
                         <img src={album.artist?.picture_small} alt="" />
-                        <Link href={`/artist/${album.artist.id}`}>
+                        <Link href={`/artist/${album?.artist?.id}`}>
                             <span className={darkMode ? styles.darkMode : undefined}>{album?.artist?.name}</span>
                         </Link>
                     </div>
                     <span className={darkMode ? styles.darkMode : undefined}>
-                        {album.nb_tracks} faixas | {album.durationAsString} min | {album.release_date} | {amountAnything.fansAmountMessage(album.fans)}
+                        {album?.nb_tracks} faixas | {album?.durationAsString} min | {album?.release_date} | {amountAnything.fansAmountMessage(album?.fans)}
                     </span>
                 </div>
             </header>
