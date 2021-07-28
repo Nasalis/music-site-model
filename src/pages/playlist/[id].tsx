@@ -30,7 +30,7 @@ export default function Playlist({album}: AlbunsProps) {
             const data = await fetch(`${apiInfo.BASE_URL}/album/${album.id}`,{
                 "method": "GET",
                 "headers": {
-                    "x-rapidapi-key": "d066035e6emshe6ee373b4813fbep19e023jsn185d48b48ca4",
+                    "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
                     "x-rapidapi-host": apiInfo.HOST
                 }
             }).then(response => response.json())
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     const data = await fetch(`${apiInfo.BASE_URL}/album/${id}`, {
         "method": "GET",
         "headers": {
-        "x-rapidapi-key": "d066035e6emshe6ee373b4813fbep19e023jsn185d48b48ca4",
+        "x-rapidapi-key": process.env.NEXT_PUBLIC_NEXT_APP_DEEZER_API_KEY,
         "x-rapidapi-host": apiInfo.HOST
         }
     }).then(data => data.json());
