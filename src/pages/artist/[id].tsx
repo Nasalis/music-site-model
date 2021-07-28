@@ -148,12 +148,12 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     }).then(data => data.json());
 
     const artist = {
-        name: data.name,
-        nb_album: data.nb_album,
-        nb_fan: data.nb_fan,
-        nb_fan_message: amountAnything.fansAmountMessage(data.nb_fan),
-        picture_medium: data.picture_medium,
-        id: data.id,
+        name: data.name ?? null,
+        nb_album: data.nb_album ?? null,
+        nb_fan: data.nb_fan ?? null,
+        nb_fan_message: amountAnything.fansAmountMessage(data.nb_fan) ?? null,
+        picture_medium: data.picture_medium ?? null,
+        id: data.id ?? null,
     }
 
     return {
