@@ -41,3 +41,14 @@ export interface Albuns {
     type: string;
     cover_medium: string,
 }
+
+export interface Track {
+    duration: number;
+    explicit_lyrics: boolean;
+    id: number;
+    preview: string;
+    rank: number;
+    title_short: string;
+    album: Albuns;
+    artist: Artist;
+}
