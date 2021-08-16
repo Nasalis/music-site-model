@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react'
 import { useTheme } from '../ThemeContext';
 
@@ -36,9 +37,11 @@ export function Header() {
                         </a>
                     </li>
                     <li>
-                        <a className={!darkMode ? styles.headerLink : `${styles.headerLink} ${styles.darkActive}`} href="#">
-                            Contact
-                        </a>
+                        <Link href="/search">
+                            <a className={!darkMode ? styles.headerLink : `${styles.headerLink} ${styles.darkActive}`} href="#">
+                                Search
+                            </a>
+                        </Link>
                     </li>
                     <li>
                         <a className={!darkMode ? styles.headerLink : `${styles.headerLink} ${styles.darkActive}`} href="#">
