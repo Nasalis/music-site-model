@@ -1,11 +1,106 @@
 .searchContainer {
     width: 100%;
     height: 100%;
+    padding-top: 1.5rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.inputForTracks {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    place-items: center;
+    width: 85%;
+    height: 5rem;
+
+        
+    input {        
+        width: 100%;
+        outline: none;
+        border: 1px solid #9b9a9a;
+        border-radius: 5px;
+        padding: 0.2rem 0.4rem;
+
+        &:focus {
+            border: 2px solid #03A9f4;
+        }
+    }
+
+    i {
+        position: absolute;
+        top: 9px;
+        right: 12px;
+        
+        font-size: 0.8rem;
+        color: #9b9a9a;
+
+        cursor: pointer;
+
+        transition: font-size 0.2s ease;
+
+        &:hover {
+            font-size: 0.85rem;
+            color: #8a8888;
+        }
+    }
+
+    button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 2rem;
+        width: 70%;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-radius: 40px;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 1px;
+        background-color: #ef5466;
+        color: white;
+        cursor: pointer;
+    }
+
+    p {
+        width: 100%;
+        text-align: left;
+        color: var(--color-text-light);
+    }
+}
+
+.alertBox {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    box-shadow: 0px 4px 20px rgba($color: #000000, $alpha: 0.2);
+
+    margin-bottom: 1.4rem;
+    padding: 2rem;
+    border-radius: 4px;
+
+    max-height: 30rem;
+    height: 100%;
+
+    h2 {
+        color: var(--color-text-light-v4);
+    }
+
+    small {
+        color: var(--color-text-light-v4);
+        font-weight: 600;
+        margin-top: 0.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    i {
+        font-size: 1.6rem;
+        color: var(--color-text-light-v4);
+    }
 }
 
 .itemsContainer {
@@ -63,7 +158,9 @@
 
     .infoBarTrack {
         position: relative;
-        margin-top: -129px;
+        width: 250px;
+        height: 128px;
+        margin-top: -128px;
         padding: 0.8rem;
         background-color: var(--color-background-light);
         box-shadow: 0px 0px 5px rgba($color: #000000, $alpha: 0.25);
@@ -75,6 +172,7 @@
 .trackTitle {
 
     h3 {
+        font-size: 1rem;
         font-weight: 400;
         color: var(--color-text-light);
         width: 100%;
@@ -127,4 +225,10 @@
         color: #4b4a4a;
     }
     
+}
+
+@media screen and (max-width: 750px) {
+    .searchContainer {
+        padding-top: 8rem;
+    }
 }
