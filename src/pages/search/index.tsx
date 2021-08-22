@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { PlaylistOrAlbumCard } from '../../components/PlaylistOrAlbumCard';
+import React, { useState } from 'react'
 import { apiInfo } from '../../components/utils/api';
 import { convertSecondsToMinutes } from '../../components/utils/convertTime';
-import { Track } from '../../components/utils/types';
+import { TracksData } from '../../components/utils/types';
 
 import style from './style.module.scss';
 
+import { usePlayer } from '../../components/PlayerContext';
+
 type Search = {
-    data: Track[];
+    data: TracksData[];
     prev: string;
     next: string;
     total: number;
@@ -19,9 +20,7 @@ export default function Search() {
     const [foundItem, setFoundItem] = useState<Search>({} as Search);
     const [itemHasFounded, setItemHasFounded] = useState(false);
 
-    function emptyItemToSearch() {
-        return setItemToSearch("");
-    }
+    const {play} = usePlayer();
 
     async function searchContent() {
         if(itemToSearch === "") {
@@ -59,7 +58,7 @@ export default function Search() {
                 </div>
             ) : (
                 <div className={style.itemsContainer}>
-                    {foundItem.data?.map((item: Track) => (
+                    {foundItem.data?.map((item: TracksData) => (
                         <div key={item.id} className={style.trackContainer} >
                             <div className={style.imageTrack}>
                                 <img src={item.album.cover_medium} alt="" />
@@ -79,6 +78,9 @@ export default function Search() {
                                     <span>Duration: {convertSecondsToMinutes(item.duration)}</span>
                                 </div>
                             </div>
+                            <button type="button" onClick={() => play(item, item.album.cover_medium)}>
+                                <i className="fas fa-play"></i>
+                            </button>
                         </div>
                     ))}
                 </div>
