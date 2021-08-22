@@ -14,12 +14,14 @@ export interface ArtistPage {
 }
 
 export type TracksData = {
+    id: number;
     title: string,
+    title_short: string;
+    explicit_lyrics: boolean;
     duration: number,
     preview: string,
-    artist: {
-        name: string
-    }
+    album: Albuns;
+    artist: Artist;
 }
 
 export type Tracks = {
@@ -40,15 +42,4 @@ export interface Albuns {
     tracks: Tracks,
     type: string;
     cover_medium: string,
-}
-
-export interface Track {
-    duration: number;
-    explicit_lyrics: boolean;
-    id: number;
-    preview: string;
-    rank: number;
-    title_short: string;
-    album: Albuns;
-    artist: Artist;
 }
